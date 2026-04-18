@@ -1,3 +1,5 @@
+{{-- resources/views/comments/index.blade.php --}}
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -30,11 +32,11 @@
                                   rows="3"
                                   required></textarea>
                     </div>
-
-                    <button type="submit"
-                            class="px-4 py-2 bg-blue-600 text-white rounded">
-                        Post Comment
-                    </button>
+                        <button type="submit"
+                                class="px-4 py-2 text-white font-semibold rounded-md"
+                                style="background-color: #2563eb;">
+                            Post Comment
+                        </button>
                 </form>
             </div>
 
@@ -55,7 +57,7 @@
 
                         {{-- UNSAFE VERSION (for XSS demo) --}}
                         <div class="text-gray-800">
-                            {!! $comment->comment !!}   {{-- intentionally vulnerable --}}
+                           {!! $comment->comment !!}   {{-- intentionally vulnerable --}}
                         </div>
                     </div>
                 @empty

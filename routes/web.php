@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,15 @@ Route::middleware('auth')->group(function(){
 Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
+
+Route::get('/echo', function(Request $request) {
+    $name = $request->query('name', '');
+    return view('echo', compact('name'));
+})->name('echo');
+
+Route::get('/dom-xss', function() {
+    return view('dom-xss');
+})->name('dom-xss');
 
 
 require __DIR__.'/auth.php';
